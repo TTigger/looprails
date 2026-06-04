@@ -41,6 +41,10 @@ CLI in the folder (e.g. `claude`) and just talk to it:
         ↳ runs the closed loop until both gates are green, or it stops for human review.
 ```
 
+> **Run `scripts/setup.sh` (or `setup.ps1` on Windows) first.** Bootstrap generates `.claude/commands/`
+> from `.agents/commands/`, so `/calibrate`, `/plan`, `/loop`, and `/learn` only register as slash
+> commands *after* it runs — a fresh clone has none yet.
+
 You never have to hand-write config — the agent fills `AGENTS.md`, drafts rubric weights, and turns a
 conversation into `PHASES.md`. Prefer the manual path? It's all still there: edit the files directly
 and run `node scripts/loop.mjs phase-1 --tool claude`. CI and power users use that path too.

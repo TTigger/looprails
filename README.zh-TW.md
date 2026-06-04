@@ -39,6 +39,10 @@ Node ≥18,以及一個 bash shell 來跑 hooks(macOS/Linux 內建;Windows 用 G
         ↳ 跑閉環直到雙閘全綠,或停下來請人介入。
 ```
 
+> **先跑 `scripts/setup.sh`(Windows 用 `setup.ps1`)。** bootstrap 會從 `.agents/commands/` 生成
+> `.claude/commands/`,所以 `/calibrate`、`/plan`、`/loop`、`/learn` 是在 setup **之後**才註冊成 slash
+> command —— 剛 clone 下來還沒有。
+
 你完全不用手寫設定 —— agent 會回填 `AGENTS.md`、草擬 rubric 權重、把對話整理進 `PHASES.md`。想走手動?
 全都還在:直接編輯檔案,跑 `node scripts/loop.mjs phase-1 --tool claude`。CI 和進階使用者也走這條。
 
