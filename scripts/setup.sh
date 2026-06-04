@@ -17,6 +17,14 @@ mkdir -p tasks .agent-learnings/entries .review
 [ -f CLAUDE.md ]           || printf '@AGENTS.md\n' > CLAUDE.md
 [ -f .agent-learnings.md ] || printf '# Agent Learnings (index)\n' > .agent-learnings.md
 
+# 4. Generate Claude Code slash commands from the single source in .agents/commands/.
+#    .claude/commands/ is gitignored and regenerated here (never hand-edited) - the same
+#    bootstrap-generated-plain-file pattern as .claude/settings.json (ADR-001/002). Zero symlinks.
+if [ -d .agents/commands ]; then
+  mkdir -p .claude/commands
+  cp -f .agents/commands/*.md .claude/commands/ 2>/dev/null || true
+fi
+
 cat <<'EOF'
 ok bootstrap done. Next:
   1) Fill AGENTS.md (Project / Setup / Constraints), or run /calibrate for guided setup.
