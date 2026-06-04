@@ -1,0 +1,28 @@
+# dependencies / build
+node_modules/
+dist/
+build/
+.next/
+*.log
+
+# secrets / env
+.env
+.env.*
+!.env.example
+
+# loop runtime artifacts (regenerated; NOT a source of truth)
+.active-scope
+.review/
+.worktrees/
+.agent-learnings/_best/          # screenshot cache for pairwise scoring
+
+# NOTE: .agent-learnings/entries/ IS tracked on purpose — it is the memory. Do not ignore it.
+# tasks/ is generated from PHASES.md; commit it for traceability, or add `tasks/` here if you
+# prefer to treat it as ephemeral.
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json

@@ -1,0 +1,25 @@
+name: verify
+
+# CI runs the DETERMINISTIC gate (gate 1) + a sanity check. Gate 2 (the LLM checklist / rubric)
+# runs inside the loop, not in CI — it needs a model and is non-deterministic. Keep CI fast and trustworthy.
+
+on: [push, pull_request]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install
+        run: <TODO e.g. pnpm i --frozen-lockfile>
+      - name: Lint
+        run: <TODO e.g. pnpm lint>
+      - name: Typecheck
+        run: <TODO e.g. pnpm typecheck>
+      - name: Test (gate 1)
+        run: <TODO e.g. pnpm test>
+      - name: Harness self-check
+        run: node --check scripts/loop.mjs && node --check eval/harness.mjs && node --check eval/score.mjs

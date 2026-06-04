@@ -1,0 +1,22 @@
+{
+  "$comment": "The only Claude-specific file. Generated/owned by bootstrap. Hook scripts are tool-neutral and live in .agents/hooks. Other tools get their own thin config that references the same scripts.",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [{ "type": "command", "command": ".agents/hooks/scope-guard.sh" }]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [{ "type": "command", "command": ".agents/hooks/post-edit-format.sh" }]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [{ "type": "command", "command": ".agents/hooks/stop-require-green.sh" }]
+      }
+    ]
+  }
+}

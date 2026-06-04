@@ -1,0 +1,23 @@
+{
+  "name": "looprails",
+  "version": "0.1.0",
+  "description": "Cross-tool boilerplate for closed-loop development: native /goal gives the engine; looprails gives the fuel, rails, and memory.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "setup": "bash scripts/setup.sh",
+    "loop": "node scripts/loop.mjs",
+    "verify": "node eval/harness.mjs"
+  },
+  "keywords": [
+    "ai-agents",
+    "closed-loop",
+    "agentic-coding",
+    "claude-code",
+    "codex",
+    "agents-md"
+  ]
+}

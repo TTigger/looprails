@@ -1,0 +1,9 @@
+# Normalize line endings for cross-platform safety (DECISIONS ADR-002: Windows + macOS).
+# Default every text file to LF in the repo, regardless of each cloner's core.autocrlf.
+* text=auto eol=lf
+
+# Shell hooks MUST be LF — CRLF makes bash fail to execute them on Linux/macOS.
+*.sh text eol=lf
+
+# PowerShell stays CRLF (Windows-native convention).
+*.ps1 text eol=crlf
